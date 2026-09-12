@@ -1,6 +1,29 @@
-/* ========================================
+/* =========================================================
+   DEVSTACK - FINAL APP CSS
+   Responsive + Premium UI
+========================================================= */
+
+/* =========================================================
    GLOBAL
-======================================== */
+========================================================= */
+
+:root {
+  --brand-gradient: linear-gradient(
+    135deg,
+    #ff641f 0%,
+    #e21b8d 50%,
+    #a629c9 100%
+  );
+
+  --brand-orange: #ff641f;
+  --brand-pink: #e21b8d;
+  --brand-purple: #a629c9;
+
+  --text-dark: #111827;
+  --text-muted: #64748b;
+  --border: #e8edf4;
+  --soft-bg: #f8fafc;
+}
 
 * {
   margin: 0;
@@ -13,13 +36,17 @@ html {
 }
 
 body {
+  margin: 0;
   font-family: Arial, Helvetica, sans-serif;
   background: #ffffff;
-  color: #111827;
+  color: var(--text-dark);
 }
 
 button,
-a {
+a,
+input,
+textarea,
+select {
   font-family: inherit;
 }
 
@@ -32,53 +59,56 @@ img {
   max-width: 100%;
 }
 
+#root {
+  width: 100%;
+  min-height: 100vh;
+}
+
 .page-shell {
   width: 100%;
   overflow: hidden;
 }
 
-/* ========================================
+/* =========================================================
    HERO
-======================================== */
+========================================================= */
 
 .hero {
-  max-width: 1200px;
-  min-height: 510px;
+  width: min(1200px, calc(100% - 48px));
+  min-height: 590px;
   margin: 0 auto;
-  padding: 65px 40px 45px;
+  padding: 70px 0;
 
   display: grid;
-  grid-template-columns: 1.15fr 0.85fr;
+  grid-template-columns: 1.05fr 0.95fr;
   align-items: center;
-  gap: 40px;
+  gap: 60px;
 }
 
 .hero-content {
-  max-width: 600px;
+  max-width: 620px;
 }
 
 .eyebrow {
   margin-bottom: 16px;
-
-  color: #e21b8d;
-  font-size: 15px;
+  color: var(--brand-pink);
+  font-size: 14px;
   font-weight: 700;
-
-  letter-spacing: 1px;
+  letter-spacing: 1.2px;
   text-transform: uppercase;
 }
 
 .hero h1 {
-  color: #111827;
-  font-size: 56px;
+  margin: 0;
+  color: var(--text-dark);
+  font-size: clamp(42px, 5vw, 58px);
   line-height: 1.08;
   font-weight: 800;
   letter-spacing: -2.5px;
 }
 
 .hero h1 span {
-  background: linear-gradient(90deg, #ff5424, #e21b8d, #a629c9);
-
+  background: var(--brand-gradient);
   -webkit-background-clip: text;
   -webkit-text-fill-color: transparent;
   background-clip: text;
@@ -87,116 +117,168 @@ img {
 .subtitle {
   max-width: 570px;
   margin-top: 22px;
-
-  color: #64748b;
-
+  color: var(--text-muted);
   font-size: 16px;
   line-height: 1.7;
 }
+
+/* =========================================================
+   HERO BUTTONS
+========================================================= */
 
 .hero-actions {
   display: flex;
   align-items: center;
   gap: 12px;
-
-  margin-top: 28px;
+  margin-top: 30px;
 }
 
 .primary-btn,
 .secondary-btn {
-  min-height: 46px;
-  padding: 0 20px;
-
-  border-radius: 8px;
+  min-height: 48px;
+  padding: 0 22px;
+  border-radius: 9px;
 
   font-size: 13px;
   font-weight: 700;
 
-  transition: all 0.25s ease;
+  transition:
+    transform 0.25s ease,
+    background 0.25s ease,
+    box-shadow 0.25s ease,
+    color 0.25s ease,
+    border-color 0.25s ease;
 }
 
 .primary-btn {
   border: none;
-
-  color: white;
-
-  background: linear-gradient(135deg, #ff641f, #ec168c);
-
-  box-shadow: 0 7px 18px rgba(236, 22, 140, 0.16);
+  color: #ffffff;
+  background: var(--brand-gradient);
+  box-shadow: 0 8px 20px rgba(236, 22, 140, 0.18);
 }
 
 .primary-btn:hover {
-  transform: translateY(-2px);
-  box-shadow: 0 12px 25px rgba(236, 22, 140, 0.24);
+  transform: translateY(-3px);
+  box-shadow: 0 12px 28px rgba(236, 22, 140, 0.27);
 }
 
 .secondary-btn {
   min-width: 145px;
-
   color: #475569;
-  background: white;
-
+  background: #ffffff;
   border: 1px solid #e5e7eb;
 }
 
 .secondary-btn:hover {
-  color: #e21b8d;
-  border-color: #e21b8d;
-
+  color: var(--brand-pink);
+  border-color: var(--brand-pink);
   transform: translateY(-2px);
 }
 
+/* =========================================================
+   HERO IMAGE
+========================================================= */
+
 .hero-visual {
+  position: relative;
+
   display: flex;
   align-items: center;
   justify-content: center;
 }
 
-.hero-visual img {
-  width: 100%;
-  max-width: 390px;
+.hero-visual::before {
+  content: "";
 
-  object-fit: contain;
+  position: absolute;
+
+  width: 340px;
+  height: 340px;
+
+  border-radius: 50%;
+
+  background: radial-gradient(
+    circle,
+    rgba(236, 72, 153, 0.12),
+    transparent 68%
+  );
+
+  z-index: -1;
 }
 
-/* ========================================
+.hero-visual img {
+  width: 100%;
+  max-width: 510px;
+  height: auto;
+
+  object-fit: contain;
+
+  animation: floatingImage 5s ease-in-out infinite;
+
+  filter: drop-shadow(0 12px 30px rgba(226, 27, 141, 0.12))
+    drop-shadow(0 8px 20px rgba(255, 84, 36, 0.08));
+}
+
+@keyframes floatingImage {
+  0% {
+    transform: translateY(0);
+  }
+
+  50% {
+    transform: translateY(-12px);
+  }
+
+  100% {
+    transform: translateY(0);
+  }
+}
+
+/* =========================================================
    TECHNOLOGY SECTION
-======================================== */
+========================================================= */
 
 .technology-section {
   width: 100%;
-  padding: 45px 30px 80px;
+  padding: 80px 0 100px;
+  background: #ffffff;
 }
 
 .technology-container {
-  max-width: 1200px;
+  width: min(1200px, calc(100% - 48px));
   margin: 0 auto;
 }
 
-/* ========================================
+/* =========================================================
    SECTION HEADING
-======================================== */
+========================================================= */
 
 .section-heading {
-  margin-bottom: 32px;
+  margin-bottom: 35px;
 }
 
 .section-heading h2 {
-  color: #111827;
+  margin: 0 0 8px;
 
-  font-size: 34px;
-  line-height: 1.2;
+  color: var(--text-dark);
+
+  font-size: clamp(30px, 4vw, 42px);
+  line-height: 1.1;
+
   font-weight: 800;
-
-  letter-spacing: -1px;
+  letter-spacing: -1.5px;
 }
 
 .section-heading h2 span {
-  color: #d53ba5;
+  background: var(--brand-gradient);
+
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+
+  background-clip: text;
 }
 
 .section-heading p {
-  margin-top: 8px;
+  margin: 0;
 
   color: #94a3b8;
 
@@ -204,48 +286,50 @@ img {
   line-height: 1.6;
 }
 
-/* ========================================
+/* =========================================================
    TECHNOLOGY LAYOUT
-======================================== */
+========================================================= */
 
 .technology-layout {
   display: grid;
 
-  grid-template-columns: minmax(0, 3fr) 300px;
+  grid-template-columns:
+    minmax(0, 3fr)
+    minmax(280px, 1fr);
+
+  gap: 25px;
 
   align-items: start;
-
-  gap: 28px;
 }
 
-/* ========================================
+/* =========================================================
    TECHNOLOGY GRID
-======================================== */
+========================================================= */
 
 .technology-grid {
   display: grid;
 
   grid-template-columns: repeat(3, minmax(0, 1fr));
 
-  gap: 18px;
+  gap: 22px;
 }
 
-/* ========================================
+/* =========================================================
    TECHNOLOGY CARD
-======================================== */
+========================================================= */
 
 .technology-card {
-  min-height: 245px;
+  min-width: 0;
+  min-height: 285px;
 
-  padding: 20px 18px 15px;
+  padding: 23px;
 
   background: #ffffff;
 
-  border: 1px solid #e8edf3;
+  border: 1px solid var(--border);
+  border-radius: 18px;
 
-  border-radius: 13px;
-
-  box-shadow: 0 3px 12px rgba(15, 23, 42, 0.025);
+  box-shadow: 0 8px 25px rgba(15, 23, 42, 0.035);
 
   transition:
     transform 0.25s ease,
@@ -254,194 +338,291 @@ img {
 }
 
 .technology-card:hover {
-  transform: translateY(-4px);
+  transform: translateY(-6px);
 
-  border-color: #f1acd3;
+  border-color: #f3a8d0;
 
-  box-shadow: 0 12px 28px rgba(15, 23, 42, 0.08);
+  box-shadow: 0 16px 36px rgba(15, 23, 42, 0.09);
 }
 
-/* ========================================
+.technology-card:first-child {
+  border-color: #f4a7cf;
+}
+
+/* =========================================================
    CARD TOP
-======================================== */
+========================================================= */
 
 .card-top {
-  min-height: 34px;
+  min-height: 56px;
 
   display: flex;
-  align-items: center;
+  align-items: flex-start;
   justify-content: space-between;
 
-  margin-bottom: 12px;
+  gap: 15px;
 }
 
+/* =========================================================
+   TECHNOLOGY ICON
+========================================================= */
+
 .technology-icon {
-  width: 32px;
-  height: 32px;
+  width: 56px;
+  height: 56px;
 
   display: flex;
   align-items: center;
   justify-content: center;
 
-  font-size: 22px;
+  flex-shrink: 0;
+
+  background: #ffffff;
+  border-radius: 14px;
+
+  font-size: 42px;
+
+  transition:
+    transform 0.3s ease,
+    filter 0.3s ease;
 }
 
+.technology-icon img {
+  width: 42px;
+  height: 42px;
+
+  object-fit: contain;
+}
+
+.technology-icon svg {
+  width: 42px;
+  height: 42px;
+}
+
+.technology-card:hover .technology-icon {
+  transform: scale(1.08) translateY(-3px);
+
+  filter: drop-shadow(0 7px 10px rgba(15, 23, 42, 0.12));
+}
+
+/* =========================================================
+   BADGE
+========================================================= */
+
 .technology-badge {
-  padding: 4px 9px;
+  padding: 7px 12px;
 
   border-radius: 999px;
 
-  color: #0ea5e9;
-  background: #eff9ff;
+  background: #fff1f8;
+  color: var(--brand-pink);
 
-  font-size: 9px;
+  font-size: 11px;
   font-weight: 700;
+
+  white-space: nowrap;
 }
 
-/* ========================================
+/* =========================================================
    CARD CONTENT
-======================================== */
+========================================================= */
 
 .technology-card h3 {
-  margin-bottom: 8px;
+  margin: 20px 0 10px;
 
-  color: #172033;
+  color: #111827;
 
-  font-size: 16px;
-  font-weight: 700;
+  font-size: 21px;
+  line-height: 1.2;
+
+  font-weight: 750;
 }
 
 .technology-description {
-  min-height: 58px;
+  min-height: 68px;
 
-  color: #8a99ad;
+  margin: 0;
 
-  font-size: 11px;
-  line-height: 1.6;
+  color: #8da0b8;
+
+  font-size: 13px;
+  line-height: 1.7;
 }
 
-/* ========================================
-   META
-======================================== */
+/* =========================================================
+   TECHNOLOGY META
+========================================================= */
 
 .technology-meta {
   display: flex;
   align-items: center;
 
   gap: 8px;
+  margin-top: 18px;
 
-  margin-top: 13px;
+  color: #71839b;
 
-  white-space: nowrap;
+  font-size: 11px;
 }
 
-.technology-meta span {
-  padding: 4px 7px;
+.technology-meta span:not(.rating) {
+  padding: 6px 9px;
 
-  color: #64748b;
   background: #f8fafc;
 
-  border-radius: 4px;
+  border-radius: 5px;
 
-  font-size: 9px;
+  white-space: nowrap;
 }
 
 .technology-meta .rating {
   margin-left: auto;
 
-  padding: 0;
-
   color: #64748b;
-  background: transparent;
 
-  font-size: 10px;
+  white-space: nowrap;
 }
 
-.technology-meta .rating::first-letter {
-  color: #f5b51b;
+.rating .star {
+  color: #f59e0b;
 }
 
-/* ========================================
-   ADD TO STACK BUTTON
-======================================== */
+/* =========================================================
+   ADD TO STACK
+========================================================= */
 
 .add-stack-btn {
   width: 100%;
+  height: 40px;
 
-  height: 37px;
-
-  margin-top: 13px;
+  margin-top: 16px;
 
   border: 1px solid transparent;
-  border-radius: 7px;
+  border-radius: 8px;
 
   color: #ffffff;
   background: #0d1320;
 
-  font-size: 10px;
-  font-weight: 600;
+  font-size: 11px;
+  font-weight: 700;
 
-  transition: all 0.2s ease;
+  transition:
+    transform 0.25s ease,
+    background 0.25s ease,
+    box-shadow 0.25s ease;
 }
 
-.add-stack-btn:hover {
-  background: #e21b8d;
+.add-stack-btn:hover:not(:disabled) {
+  background: var(--brand-gradient);
 
-  transform: translateY(-1px);
+  transform: translateY(-2px);
+
+  box-shadow: 0 8px 18px rgba(226, 27, 141, 0.18);
 }
 
-.add-stack-btn:active {
+.add-stack-btn:active:not(:disabled) {
   transform: scale(0.98);
 }
 
-/* ========================================
+.add-stack-btn.added {
+  color: #15803d;
+
+  background: #f0fdf4;
+
+  border-color: #bbf7d0;
+
+  cursor: not-allowed;
+
+  box-shadow: none;
+}
+
+.add-stack-btn.added:hover {
+  transform: none;
+}
+
+.add-stack-btn:disabled {
+  cursor: not-allowed;
+}
+
+/* =========================================================
    YOUR STACK
-======================================== */
+========================================================= */
 
 .your-stack {
   position: sticky;
   top: 95px;
 
-  padding: 20px 16px;
+  padding: 22px 17px;
 
   background: #ffffff;
 
   border: 1px solid #e8edf3;
-  border-radius: 13px;
+  border-radius: 16px;
 
-  box-shadow: 0 3px 12px rgba(15, 23, 42, 0.025);
+  box-shadow: 0 6px 20px rgba(15, 23, 42, 0.04);
 }
 
-.your-stack > h3 {
-  margin-bottom: 4px;
+.your-stack h3 {
+  margin: 0;
 
   color: #172033;
 
-  font-size: 15px;
+  font-size: 19px;
   font-weight: 800;
 }
 
-.your-stack > p {
-  margin-bottom: 13px;
+.stack-header p {
+  margin: 7px 0 18px;
 
-  color: #a0aec0;
+  color: #9aaec5;
 
-  font-size: 10px;
+  font-size: 11px;
+  line-height: 1.5;
 }
 
-/* ========================================
+/* =========================================================
    STACK ITEMS
-======================================== */
+========================================================= */
 
 .stack-items {
   display: flex;
   flex-direction: column;
 
-  gap: 6px;
+  gap: 8px;
+
+  min-height: 95px;
+}
+
+.empty-stack {
+  display: flex;
+
+  flex-direction: column;
+
+  align-items: center;
+  justify-content: center;
+
+  min-height: 95px;
+
+  padding: 15px;
+
+  color: #94a3b8;
+
+  text-align: center;
+
+  font-size: 11px;
+  line-height: 1.6;
+}
+
+.empty-stack span {
+  margin-bottom: 6px;
+
+  color: #cbd5e1;
+
+  font-size: 25px;
 }
 
 .stack-item {
-  min-height: 40px;
+  min-height: 44px;
 
   display: flex;
   align-items: center;
@@ -449,28 +630,52 @@ img {
 
   padding: 7px 9px;
 
-  border: 1px solid #e8edf3;
-  border-radius: 7px;
-
   background: #ffffff;
+
+  border: 1px solid #e8edf3;
+  border-radius: 9px;
+
+  transition:
+    border-color 0.2s ease,
+    background 0.2s ease,
+    transform 0.2s ease;
+}
+
+.stack-item:hover {
+  border-color: #f1acd3;
+
+  background: #fffafd;
+
+  transform: translateX(2px);
 }
 
 .stack-item-info {
+  min-width: 0;
+
   display: flex;
   align-items: center;
 
-  gap: 8px;
+  gap: 9px;
 }
 
 .stack-icon {
-  width: 22px;
-  height: 22px;
+  width: 28px;
+  height: 28px;
 
   display: flex;
   align-items: center;
   justify-content: center;
 
-  font-size: 15px;
+  flex-shrink: 0;
+
+  font-size: 18px;
+}
+
+.stack-icon img {
+  width: 22px;
+  height: 22px;
+
+  object-fit: contain;
 }
 
 .stack-item-info strong {
@@ -478,7 +683,7 @@ img {
 
   color: #334155;
 
-  font-size: 10px;
+  font-size: 11px;
 }
 
 .stack-item-info small {
@@ -488,138 +693,379 @@ img {
 
   color: #a0aec0;
 
-  font-size: 7px;
+  font-size: 8px;
 }
 
-.stack-item button {
-  width: 20px;
-  height: 20px;
+.stack-item > button {
+  width: 24px;
+  height: 24px;
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
 
   border: none;
 
   color: #a8b3c2;
   background: transparent;
 
-  font-size: 17px;
+  font-size: 18px;
+
+  transition:
+    color 0.2s ease,
+    transform 0.2s ease;
 }
 
-.stack-item button:hover {
-  color: #e21b8d;
+.stack-item > button:hover {
+  color: var(--brand-pink);
+
+  transform: scale(1.1);
 }
 
-/* ========================================
-   EMPTY STACK
-======================================== */
-
-.empty-stack {
-  padding: 15px 5px;
-
-  color: #94a3b8;
-
-  font-size: 10px;
-  line-height: 1.5;
-}
-
-/* ========================================
+/* =========================================================
    REMOVE ALL
-======================================== */
+========================================================= */
 
 .remove-all-btn {
   width: 100%;
-
-  height: 32px;
+  height: 36px;
 
   margin-top: 18px;
 
   border: 1px solid #f3a7c9;
-  border-radius: 6px;
+  border-radius: 8px;
 
-  color: #e21b8d;
+  color: var(--brand-pink);
   background: #ffffff;
 
   font-size: 10px;
   font-weight: 600;
 
-  transition: all 0.2s ease;
+  transition:
+    transform 0.2s ease,
+    background 0.2s ease,
+    box-shadow 0.2s ease,
+    color 0.2s ease;
 }
 
 .remove-all-btn:hover:not(:disabled) {
   color: #ffffff;
-  background: #e21b8d;
+
+  background: var(--brand-pink);
+
+  transform: translateY(-1px);
+
+  box-shadow: 0 6px 14px rgba(226, 27, 141, 0.16);
 }
 
 .remove-all-btn:disabled {
   opacity: 0.45;
+
   cursor: not-allowed;
 }
 
-/* ========================================
+/* =========================================================
+   LOADING
+========================================================= */
+
+.loading-state {
+  min-height: 350px;
+
+  display: flex;
+  flex-direction: column;
+
+  align-items: center;
+  justify-content: center;
+
+  gap: 15px;
+
+  color: #94a3b8;
+
+  font-size: 13px;
+}
+
+.loading-spinner {
+  width: 42px;
+  height: 42px;
+
+  border: 4px solid #f1f5f9;
+  border-top-color: var(--brand-pink);
+
+  border-radius: 50%;
+
+  animation: loadingSpin 0.8s linear infinite;
+}
+
+@keyframes loadingSpin {
+  to {
+    transform: rotate(360deg);
+  }
+}
+
+/* =========================================================
    FOOTER
-======================================== */
+========================================================= */
 
 .footer {
-  margin-top: 20px;
+  width: 100%;
+
+  margin-top: 80px;
 
   background: #ffffff;
 
-  border-top: 1px solid #edf0f4;
+  border-top: 1px solid #e8eaf0;
 }
 
 .footer-container {
-  max-width: 1200px;
+  width: min(1400px, 100%);
 
   margin: 0 auto;
 
-  padding: 48px 30px;
+  padding: 70px 80px 60px;
 
-  display: flex;
-  align-items: flex-start;
-  justify-content: space-between;
+  display: grid;
+
+  grid-template-columns: 2fr 1fr 1fr 1fr;
+
+  gap: 60px;
 }
 
 .footer-brand {
-  max-width: 420px;
+  max-width: 470px;
 }
 
-.footer-brand h3 {
-  margin-bottom: 10px;
+.footer-logo {
+  display: flex;
+  align-items: center;
 
-  color: #182033;
+  margin-bottom: 0;
+  padding-bottom: 0;
+}
 
-  font-size: 18px;
-  font-weight: 800;
+.footer-logo img {
+  width: 100px;
+  height: 100px;
+
+  object-fit: contain;
+
+  display: block;
 }
 
 .footer-brand p {
-  color: #94a3b8;
+  max-width: 470px;
 
-  font-size: 11px;
+  margin: 0;
+  padding: 0;
+
+  color: #8b9ab0;
+
+  font-size: 14px;
   line-height: 1.7;
 }
 
-.footer-bottom {
-  border-top: 1px solid #edf0f4;
+/* =========================================================
+   FOOTER SOCIALS
+========================================================= */
+
+.footer-socials {
+  display: flex;
+  align-items: center;
+
+  flex-wrap: wrap;
+
+  gap: 12px;
+
+  margin-top: 28px;
 }
 
-.footer-bottom p {
-  max-width: 1200px;
+.footer-socials a {
+  min-width: 44px;
+  height: 44px;
+
+  padding: 0 13px;
+
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+
+  gap: 8px;
+
+  flex-shrink: 0;
+
+  border: 1px solid #e2e8f0;
+  border-radius: 10px;
+
+  background: #ffffff;
+
+  color: #111827;
+
+  text-decoration: none;
+
+  font-size: 13px;
+  font-weight: 600;
+
+  transition:
+    transform 0.25s ease,
+    background 0.25s ease,
+    color 0.25s ease,
+    border-color 0.25s ease,
+    box-shadow 0.25s ease;
+}
+
+.footer-socials a svg {
+  width: 19px;
+  height: 19px;
+
+  display: block;
+
+  flex-shrink: 0;
+
+  fill: currentColor;
+}
+
+.footer-socials a span {
+  display: inline-block;
+
+  white-space: nowrap;
+}
+
+.footer-socials a:hover {
+  transform: translateY(-4px);
+
+  color: #ffffff;
+
+  box-shadow: 0 10px 24px rgba(15, 23, 42, 0.15);
+}
+
+.footer-socials a:nth-child(1):hover {
+  background: #181717;
+  border-color: #181717;
+}
+
+.footer-socials a:nth-child(2):hover {
+  background: #1da1f2;
+  border-color: #1da1f2;
+}
+
+.footer-socials a:nth-child(3):hover {
+  background: #0a66c2;
+  border-color: #0a66c2;
+}
+
+.footer-socials a:active {
+  transform: translateY(-1px) scale(0.97);
+}
+
+.footer-socials a:focus-visible {
+  outline: 3px solid rgba(226, 29, 141, 0.25);
+
+  outline-offset: 3px;
+}
+
+/* =========================================================
+   FOOTER COLUMNS
+========================================================= */
+
+.footer-column {
+  display: flex;
+
+  flex-direction: column;
+
+  align-items: flex-start;
+}
+
+.footer-column h4 {
+  margin: 0 0 20px;
+
+  color: #111827;
+
+  font-size: 15px;
+  font-weight: 800;
+}
+
+.footer-column a {
+  display: block;
+
+  margin-bottom: 12px;
+
+  color: #718096;
+
+  font-size: 14px;
+  line-height: 1.5;
+
+  text-decoration: none;
+
+  transition:
+    color 0.2s ease,
+    transform 0.2s ease;
+}
+
+.footer-column a:hover {
+  color: var(--brand-pink);
+
+  transform: translateX(3px);
+}
+
+/* =========================================================
+   FOOTER BOTTOM
+========================================================= */
+
+.footer-bottom {
+  width: min(1400px, 100%);
 
   margin: 0 auto;
 
-  padding: 18px 30px;
+  padding: 22px 80px;
 
-  color: #a4afbd;
+  display: flex;
 
-  font-size: 10px;
+  align-items: center;
+  justify-content: space-between;
+
+  gap: 20px;
+
+  border-top: 1px solid #e8eaf0;
 }
 
-/* ========================================
+.footer-bottom p {
+  margin: 0;
+
+  color: #8b9ab0;
+
+  font-size: 13px;
+}
+
+.footer-bottom-links {
+  display: flex;
+
+  gap: 24px;
+
+  flex-wrap: wrap;
+}
+
+.footer-bottom-links a {
+  color: #718096;
+
+  font-size: 13px;
+
+  text-decoration: none;
+
+  transition: color 0.2s ease;
+}
+
+.footer-bottom-links a:hover {
+  color: var(--brand-pink);
+}
+
+/* =========================================================
    TABLET
-======================================== */
+========================================================= */
 
 @media (max-width: 1000px) {
   .hero {
-    grid-template-columns: 1fr 0.8fr;
+    grid-template-columns: 1fr 0.85fr;
+
+    gap: 35px;
 
     padding-left: 25px;
     padding-right: 25px;
@@ -638,13 +1084,29 @@ img {
   }
 
   .technology-grid {
-    grid-template-columns: repeat(3, 1fr);
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+  }
+
+  .footer-container {
+    grid-template-columns: 1fr 1fr;
+
+    padding: 55px 30px 45px;
+
+    gap: 40px;
+  }
+
+  .footer-brand {
+    grid-column: 1 / -1;
+  }
+
+  .footer-bottom {
+    padding: 20px 30px;
   }
 }
 
-/* ========================================
-   TABLET / SMALL
-======================================== */
+/* =========================================================
+   TABLET / SMALL LAPTOP
+========================================================= */
 
 @media (max-width: 800px) {
   .hero {
@@ -659,14 +1121,8 @@ img {
 
   .hero-content {
     max-width: 650px;
+
     margin: 0 auto;
-  }
-
-  .hero h1 {
-    margin-left: auto;
-    margin-right: auto;
-
-    font-size: 48px;
   }
 
   .subtitle {
@@ -679,26 +1135,34 @@ img {
   }
 
   .hero-visual img {
-    max-width: 350px;
+    max-width: 400px;
   }
 
-  .technology-section {
-    padding-left: 22px;
-    padding-right: 22px;
+  .technology-container {
+    width: min(100% - 40px, 700px);
   }
 
   .technology-grid {
-    grid-template-columns: repeat(2, 1fr);
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+
+  .technology-section {
+    padding-left: 20px;
+    padding-right: 20px;
   }
 }
 
-/* ========================================
+/* =========================================================
    MOBILE
-======================================== */
+========================================================= */
 
 @media (max-width: 600px) {
   .hero {
-    padding: 50px 18px 40px;
+    width: min(100% - 32px, 520px);
+
+    padding: 50px 0 45px;
+
+    gap: 45px;
   }
 
   .eyebrow {
@@ -707,6 +1171,7 @@ img {
 
   .hero h1 {
     font-size: 38px;
+
     letter-spacing: -1.5px;
   }
 
@@ -723,6 +1188,7 @@ img {
   .primary-btn,
   .secondary-btn {
     width: 100%;
+
     max-width: 280px;
   }
 
@@ -731,11 +1197,19 @@ img {
   }
 
   .technology-section {
-    padding: 45px 16px 60px;
+    padding: 55px 0 70px;
+  }
+
+  .technology-container {
+    width: min(100% - 28px, 520px);
+  }
+
+  .section-heading {
+    margin-bottom: 27px;
   }
 
   .section-heading h2 {
-    font-size: 28px;
+    font-size: 29px;
   }
 
   .section-heading p {
@@ -745,32 +1219,94 @@ img {
   .technology-grid {
     grid-template-columns: 1fr;
 
-    gap: 15px;
+    gap: 16px;
   }
 
   .technology-card {
     min-height: auto;
+
+    padding: 20px;
+  }
+
+  .technology-card h3 {
+    font-size: 19px;
+  }
+
+  .technology-description {
+    min-height: auto;
   }
 
   .your-stack {
-    padding: 18px 14px;
+    padding: 20px;
+  }
+
+  .footer {
+    margin-top: 55px;
   }
 
   .footer-container {
-    padding: 40px 18px;
+    grid-template-columns: 1fr;
+
+    padding: 45px 20px;
+
+    gap: 35px;
   }
 
-  .footer-bottom p {
-    padding-left: 18px;
-    padding-right: 18px;
+  .footer-brand {
+    grid-column: auto;
+  }
+
+  .footer-logo img {
+    width: 70px;
+    height: 70px;
+  }
+
+  .footer-socials {
+    gap: 10px;
+
+    margin-top: 22px;
+  }
+
+  .footer-socials a {
+    min-width: 42px;
+    height: 42px;
+
+    padding: 0 11px;
+
+    gap: 7px;
+
+    font-size: 12px;
+  }
+
+  .footer-socials a svg {
+    width: 18px;
+    height: 18px;
+  }
+
+  .footer-bottom {
+    padding: 20px;
+
+    flex-direction: column;
+
+    align-items: flex-start;
+
+    gap: 15px;
+  }
+
+  .footer-bottom-links {
+    gap: 18px;
   }
 }
 
-/* ========================================
+/* =========================================================
    SMALL MOBILE
-======================================== */
+========================================================= */
 
 @media (max-width: 400px) {
+  .hero {
+    width: min(100% - 26px, 380px);
+  }
+
   .hero h1 {
     font-size: 33px;
   }
@@ -780,21 +1316,143 @@ img {
   }
 
   .section-heading h2 {
-    font-size: 25px;
+    font-size: 26px;
+  }
+
+  .technology-meta {
+    gap: 5px;
+  }
+
+  .technology-meta span {
+    font-size: 9px;
+  }
+
+  .technology-card {
+    padding: 18px;
+  }
+
+  .footer-socials {
+    gap: 8px;
+  }
+
+  .footer-socials a {
+    min-width: 40px;
+
+    width: 40px;
+    height: 40px;
+
+    padding: 0 9px;
+  }
+
+  .footer-socials a span {
+    display: none;
+  }
+
+  .footer-socials a svg {
+    width: 18px;
+    height: 18px;
+  }
+
+  .footer-logo img {
+    width: 65px;
+    height: 65px;
   }
 }
-.technology-icon {
-  width: 32px;
-  height: 32px;
 
-  display: flex;
-  align-items: center;
-  justify-content: flex-start;
+/* =========================================================
+   ACCESSIBILITY
+========================================================= */
 
-  font-size: 24px;
+button:focus-visible,
+a:focus-visible {
+  outline: 3px solid rgba(226, 27, 141, 0.25);
+
+  outline-offset: 3px;
 }
 
-.technology-icon svg {
-  width: 24px;
-  height: 24px;
+/* =========================================================
+   REDUCED MOTION
+========================================================= */
+
+@media (prefers-reduced-motion: reduce) {
+  html {
+    scroll-behavior: auto;
+  }
+
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.01ms !important;
+
+    animation-iteration-count: 1 !important;
+
+    transition-duration: 0.01ms !important;
+  }
+}
+
+/* =========================================================
+   REACT TOASTIFY
+========================================================= */
+
+.Toastify__toast {
+  border-radius: 10px !important;
+
+  font-family: Arial, Helvetica, sans-serif !important;
+
+  font-size: 13px !important;
+
+  font-weight: 600 !important;
+
+  box-shadow: 0 12px 30px rgba(15, 23, 42, 0.15) !important;
+}
+
+.Toastify__toast--success {
+  border-left: 4px solid #22c55e;
+}
+
+.Toastify__toast--warning {
+  border-left: 4px solid #f59e0b;
+}
+
+.Toastify__toast--error {
+  border-left: 4px solid #ef4444;
+}
+
+.Toastify__toast--info {
+  border-left: 4px solid #3b82f6;
+}
+
+.Toastify__progress-bar--success {
+  background: #22c55e;
+}
+
+.Toastify__progress-bar--warning {
+  background: #f59e0b;
+}
+
+.Toastify__progress-bar--error {
+  background: #ef4444;
+}
+
+.Toastify__progress-bar--info {
+  background: #3b82f6;
+}
+
+/* =========================================================
+   TOAST MOBILE
+========================================================= */
+
+@media (max-width: 600px) {
+  .Toastify__toast-container {
+    width: calc(100% - 30px) !important;
+
+    left: 15px !important;
+    right: 15px !important;
+
+    top: 70px !important;
+  }
+
+  .Toastify__toast {
+    font-size: 12px !important;
+  }
 }

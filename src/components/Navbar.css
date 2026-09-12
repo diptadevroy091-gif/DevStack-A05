@@ -6,9 +6,7 @@
   position: sticky;
   top: 0;
   z-index: 1000;
-
   width: 100%;
-
   background: #ffffff;
   border-bottom: 1px solid #f1f5f9;
 }
@@ -18,15 +16,12 @@
 ======================================== */
 
 .nav-container {
-  max-width: 1200px;
+  width: min(1200px, calc(100% - 40px));
   height: 76px;
-
   margin: 0 auto;
-  padding: 0 28px;
 
   display: flex;
   align-items: center;
-
   gap: 35px;
 }
 
@@ -37,23 +32,19 @@
 .logo {
   display: flex;
   align-items: center;
-
   flex-shrink: 0;
-
   text-decoration: none;
 }
 
 .logo img {
-  width: 100px;
-  height: 100px;
-
+  width: 130px;
+  height: 130px;
   object-fit: contain;
-
   display: block;
 }
 
 /* ========================================
-   NAVIGATION LINKS
+   NAVIGATION
 ======================================== */
 
 .nav-links {
@@ -70,39 +61,37 @@
   position: relative;
 
   color: #64748b;
-
   font-size: 14px;
   font-weight: 500;
 
   text-decoration: none;
 
-  transition: color 0.2s ease;
+  transition:
+    color 0.2s ease,
+    transform 0.2s ease;
 }
 
 .nav-links a:hover {
-  color: #e11d8d;
+  color: #e21b8d;
 }
 
 .nav-links .active-link {
-  color: #e11d8d;
+  color: #e21b8d;
+  font-weight: 600;
 }
-
-/* Active underline */
 
 .nav-links .active-link::after {
   content: "";
 
   position: absolute;
-
   left: 0;
   right: 0;
   bottom: -10px;
 
   height: 2px;
-
   border-radius: 10px;
 
-  background: #e11d8d;
+  background: #e21b8d;
 }
 
 /* ========================================
@@ -112,25 +101,21 @@
 .nav-actions {
   display: flex;
   align-items: center;
-
   gap: 18px;
-
   flex-shrink: 0;
 }
 
 .sign-in {
   color: #475569;
-
   font-size: 14px;
   font-weight: 500;
-
   text-decoration: none;
 
   transition: color 0.2s ease;
 }
 
 .sign-in:hover {
-  color: #e11d8d;
+  color: #e21b8d;
 }
 
 .sign-up {
@@ -143,15 +128,14 @@
   border-radius: 999px;
 
   color: #ffffff;
-
-  background: linear-gradient(135deg, #ec4899, #d91b83);
+  background: var(--brand-gradient);
 
   font-size: 14px;
   font-weight: 600;
 
   text-decoration: none;
 
-  box-shadow: 0 5px 14px rgba(217, 27, 131, 0.18);
+  box-shadow: 0 6px 16px rgba(226, 27, 141, 0.18);
 
   transition:
     transform 0.2s ease,
@@ -160,8 +144,7 @@
 
 .sign-up:hover {
   transform: translateY(-2px);
-
-  box-shadow: 0 8px 18px rgba(217, 27, 131, 0.25);
+  box-shadow: 0 10px 22px rgba(226, 27, 141, 0.25);
 }
 
 /* ========================================
@@ -180,13 +163,11 @@
   padding: 0;
 
   border: none;
-
   background: transparent;
 
   color: #111827;
 
-  font-size: 26px;
-
+  font-size: 25px;
   line-height: 1;
 
   cursor: pointer;
@@ -198,14 +179,13 @@
 
 @media (max-width: 1000px) {
   .nav-container {
+    width: calc(100% - 32px);
     gap: 20px;
-
-    padding: 0 20px;
   }
 
   .logo img {
-    width: 54px;
-    height: 54px;
+    width: 52px;
+    height: 52px;
   }
 
   .nav-links {
@@ -222,7 +202,6 @@
 
   .sign-up {
     padding: 10px 16px;
-
     font-size: 13px;
   }
 }
@@ -235,12 +214,12 @@
   .nav-container {
     position: relative;
 
+    width: 100%;
     height: 68px;
 
     padding: 0 14px;
 
     justify-content: space-between;
-
     gap: 0;
   }
 
@@ -248,7 +227,6 @@
 
   .menu-btn {
     display: flex;
-
     flex-shrink: 0;
   }
 
@@ -264,15 +242,14 @@
   }
 
   .logo img {
-    width: 48px;
-    height: 48px;
+    width: 50px;
+    height: 50px;
   }
 
   /* Right Buttons */
 
   .nav-actions {
     margin-left: auto;
-
     gap: 8px;
   }
 
@@ -282,7 +259,6 @@
 
   .sign-up {
     padding: 8px 12px;
-
     font-size: 12px;
   }
 
@@ -309,9 +285,7 @@
 
     border-top: 1px solid #f1f5f9;
 
-    box-shadow: 0 10px 25px rgba(0, 0, 0, 0.08);
-
-    box-sizing: border-box;
+    box-shadow: 0 12px 30px rgba(15, 23, 42, 0.08);
   }
 
   .nav-links.active {
@@ -334,20 +308,18 @@
 @media (max-width: 480px) {
   .nav-container {
     height: 64px;
-
     padding: 0 10px;
   }
 
   .menu-btn {
     width: 36px;
     height: 36px;
-
     font-size: 23px;
   }
 
   .logo img {
-    width: 44px;
-    height: 44px;
+    width: 48px;
+    height: 48px;
   }
 
   .nav-actions {
@@ -360,7 +332,10 @@
 
   .sign-up {
     padding: 7px 10px;
-
     font-size: 11px;
+  }
+
+  .nav-links {
+    top: 64px;
   }
 }
