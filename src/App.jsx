@@ -12,30 +12,49 @@ function App() {
       {/* ================= NAVBAR ================= */}
       <Navbar />
 
-      {/* ================= HERO ================= */}
+      {/* ================= MAIN CONTENT ================= */}
       <main className="page-shell">
-        <section className="hero">
+        {/* ================= HERO SECTION ================= */}
+        <section className="hero" id="home">
           <div className="hero-content">
-            <p className="eyebrow">Modern Tech Stack</p>
-            <h1>Build smarter products with the right tech.</h1>
+            <h1>
+              Build Your Ideal
+              <br />
+              <span>Development Stack</span>
+            </h1>
+
             <p className="subtitle">
-              Discover modern tools, scalable systems, and practical strategies
-              that help teams ship faster.
+              Explore frontend, backend, database, and tooling options, compare
+              them side by side, and put together the stack that fits your next
+              project.
             </p>
+
             <div className="hero-actions">
-              <button className="primary-btn">Get started</button>
-              <button className="secondary-btn">Explore stack</button>
+              <button
+                className="primary-btn"
+                onClick={() =>
+                  document
+                    .getElementById("technologies")
+                    ?.scrollIntoView({ behavior: "smooth" })
+                }
+              >
+                Explore Technologies
+              </button>
+
+              <button className="secondary-btn">Learn More</button>
             </div>
           </div>
 
           <div className="hero-visual">
-            <img src={banner} alt="Technology banner" />
+            <img src={banner} alt="Dev Stack Technology Banner" />
           </div>
         </section>
 
+        {/* ================= TECHNOLOGY SECTION ================= */}
         <TechnologySection />
       </main>
 
+      {/* ================= FOOTER ================= */}
       <Footer />
     </>
   );

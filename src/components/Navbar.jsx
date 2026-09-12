@@ -1,6 +1,7 @@
 import { useState } from "react";
 import logo from "../assets/logo.png";
 import "./Navbar.css";
+
 function Navbar() {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
 
@@ -20,7 +21,7 @@ function Navbar() {
 
         {/* Logo */}
         <a href="#home" className="logo">
-          <img src={logo} alt="Dev Stack" />
+          <img src={logo} alt="Dev Stack Logo" />
         </a>
 
         {/* Navigation Links */}

@@ -1,5 +1,5 @@
 import { useState } from "react";
-import technologies from "../data/technologies.js";
+import technologies from "../data/technologies.jsx";
 
 function TechnologySection() {
   const [stack, setStack] = useState([]);
