@@ -61,7 +61,7 @@ function TechnologySection() {
     setStack((currentStack) => currentStack.filter((item) => item.id !== id));
 
     if (technology) {
-      toast.info(`${technology.name} removed from your stack.`);
+      toast.error(`${technology.name} removed from your stack.`);
     }
   };
 
@@ -73,7 +73,7 @@ function TechnologySection() {
 
     setStack([]);
 
-    toast.success("All technologies removed!");
+    toast.error("All technologies removed!");
   };
 
   // Loading
