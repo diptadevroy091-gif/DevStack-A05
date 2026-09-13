@@ -230,20 +230,12 @@
     flex-shrink: 0;
   }
 
-  /* Center Logo */
+  /* ========================================
+     MOBILE LOGO HIDDEN
+  ======================================== */
 
   .logo {
-    position: absolute;
-
-    left: 50%;
-    top: 50%;
-
-    transform: translate(-50%, -50%);
-  }
-
-  .logo img {
-    width: 50px;
-    height: 50px;
+    display: none;
   }
 
   /* Right Buttons */
@@ -317,9 +309,10 @@
     font-size: 23px;
   }
 
-  .logo img {
-    width: 48px;
-    height: 48px;
+  /* Logo remains hidden on small phones */
+
+  .logo {
+    display: none;
   }
 
   .nav-actions {
